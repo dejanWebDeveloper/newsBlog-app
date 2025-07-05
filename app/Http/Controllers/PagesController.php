@@ -22,4 +22,8 @@ class PagesController extends Controller
     {
         return view('front.contact.contact_page');
     }
+    public function searchResult()
+    {
+        return view('front.search_result.search_result_page');
+    }
 }
