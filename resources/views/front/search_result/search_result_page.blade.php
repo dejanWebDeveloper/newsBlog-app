@@ -8,9 +8,9 @@
 
                 <div class="col-lg-4 sidebar">
 
-                    @include('front.search_result.partials.search')
-                    @include('front.search_result.partials.popular_post')
-                    @include('front.search_result.partials.categories_and_tags')
+                    @include('front.partials.search')
+                    @include('front.partials.popular_post')
+                    @include('front.partials.categories_and_tags')
 
                 </div>
             </div>

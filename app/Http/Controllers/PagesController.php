@@ -26,4 +26,8 @@ class PagesController extends Controller
     {
         return view('front.search_result.search_result_page');
     }
+    public function singlePage()
+    {
+        return view('front.single_page.single_page');
+    }
 }

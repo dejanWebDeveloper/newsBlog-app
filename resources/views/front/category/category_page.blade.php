@@ -4,13 +4,13 @@
         <div class="container">
             @include('front.category.partials.title')
             <div class="row posts-entry">
-                @include('front.category.partials.categories_news')
+                @include('front.partials.categories_news')
 
                 <div class="col-lg-4 sidebar">
 
-                    @include('front.category.partials.search')
-                    @include('front.category.partials.popular_post')
-                    @include('front.category.partials.categories_and_tags')
+                    @include('front.partials.search')
+                    @include('front.partials.popular_post')
+                    @include('front.partials.categories_and_tags')
 
                 </div>
             </div>
