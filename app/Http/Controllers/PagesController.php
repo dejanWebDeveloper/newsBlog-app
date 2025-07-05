@@ -18,4 +18,8 @@ class PagesController extends Controller
     {
         return view('front.category.category_page');
     }
+    public function contact()
+    {
+        return view('front.contact.contact_page');
+    }
 }
