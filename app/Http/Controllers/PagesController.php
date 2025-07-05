@@ -14,4 +14,8 @@ class PagesController extends Controller
     {
         return view('front.blog.blog_page');
     }
+    public function category()
+    {
+        return view('front.category.category_page');
+    }
 }
