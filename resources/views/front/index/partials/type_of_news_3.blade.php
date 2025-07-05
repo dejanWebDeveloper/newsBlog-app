@@ -5,18 +5,18 @@
             <div class="col-sm-6">
                 <h2 class="posts-entry-title">Politics</h2>
             </div>
-            <div class="col-sm-6 text-sm-end"><a href="category.html" class="read-more">View All</a></div>
+            <div class="col-sm-6 text-sm-end"><a href="{{route('category_page')}}" class="read-more">View All</a></div>
         </div>
 
         <div class="row">
             <div class="col-lg-4 mb-4">
                 <div class="post-entry-alt">
-                    <a href="single.html" class="img-link"><img src="images/img_7_horizontal.jpg" alt="Image"
+                    <a href="{{route('single_page')}}" class="img-link"><img src="images/img_7_horizontal.jpg" alt="Image"
                                                                 class="img-fluid"></a>
                     <div class="excerpt">
 
 
-                        <h2><a href="single.html">Startup vs corporate: What job suits you best?</a></h2>
+                        <h2><a href="{{route('single_page')}}">Startup vs corporate: What job suits you best?</a></h2>
                         <div class="post-meta align-items-center text-left clearfix">
                             <figure class="author-figure mb-0 me-3 float-start"><img src="images/person_1.jpg"
                                                                                      alt="Image" class="img-fluid">
@@ -34,7 +34,7 @@
             </div>
             <div class="col-lg-4 mb-4">
                 <div class="post-entry-alt">
-                    <a href="single.html" class="img-link"><img src="images/img_6_horizontal.jpg" alt="Image"
+                    <a href="{{route('single_page')}}" class="img-link"><img src="images/img_6_horizontal.jpg" alt="Image"
                                                                 class="img-fluid"></a>
                     <div class="excerpt">
 
@@ -57,7 +57,7 @@
             </div>
             <div class="col-lg-4 mb-4">
                 <div class="post-entry-alt">
-                    <a href="single.html" class="img-link"><img src="images/img_5_horizontal.jpg" alt="Image"
+                    <a href="{{route('single_page')}}" class="img-link"><img src="images/img_5_horizontal.jpg" alt="Image"
                                                                 class="img-fluid"></a>
                     <div class="excerpt">
 
@@ -82,7 +82,7 @@
 
             <div class="col-lg-4 mb-4">
                 <div class="post-entry-alt">
-                    <a href="single.html" class="img-link"><img src="images/img_4_horizontal.jpg" alt="Image"
+                    <a href="{{route('single_page')}}" class="img-link"><img src="images/img_4_horizontal.jpg" alt="Image"
                                                                 class="img-fluid"></a>
                     <div class="excerpt">
 
@@ -105,7 +105,7 @@
             </div>
             <div class="col-lg-4 mb-4">
                 <div class="post-entry-alt">
-                    <a href="single.html" class="img-link"><img src="images/img_3_horizontal.jpg" alt="Image"
+                    <a href="{{route('single_page')}}" class="img-link"><img src="images/img_3_horizontal.jpg" alt="Image"
                                                                 class="img-fluid"></a>
                     <div class="excerpt">
 
@@ -128,7 +128,7 @@
             </div>
             <div class="col-lg-4 mb-4">
                 <div class="post-entry-alt">
-                    <a href="single.html" class="img-link"><img src="images/img_2_horizontal.jpg" alt="Image"
+                    <a href="{{route('single_page')}}" class="img-link"><img src="images/img_2_horizontal.jpg" alt="Image"
                                                                 class="img-fluid"></a>
                     <div class="excerpt">
 
@@ -153,7 +153,7 @@
 
             <div class="col-lg-4 mb-4">
                 <div class="post-entry-alt">
-                    <a href="single.html" class="img-link"><img src="images/img_1_horizontal.jpg" alt="Image"
+                    <a href="{{route('single_page')}}" class="img-link"><img src="images/img_1_horizontal.jpg" alt="Image"
                                                                 class="img-fluid"></a>
                     <div class="excerpt">
 
@@ -176,7 +176,7 @@
             </div>
             <div class="col-lg-4 mb-4">
                 <div class="post-entry-alt">
-                    <a href="single.html" class="img-link"><img src="images/img_4_horizontal.jpg" alt="Image"
+                    <a href="{{route('single_page')}}" class="img-link"><img src="images/img_4_horizontal.jpg" alt="Image"
                                                                 class="img-fluid"></a>
                     <div class="excerpt">
 
@@ -198,7 +198,7 @@
             </div>
             <div class="col-lg-4 mb-4">
                 <div class="post-entry-alt">
-                    <a href="single.html" class="img-link"><img src="images/img_3_horizontal.jpg" alt="Image"
+                    <a href="{{route('single_page')}}" class="img-link"><img src="images/img_3_horizontal.jpg" alt="Image"
                                                                 class="img-fluid"></a>
                     <div class="excerpt">
 

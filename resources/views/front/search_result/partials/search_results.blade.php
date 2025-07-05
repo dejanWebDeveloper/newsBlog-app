@@ -1,61 +1,61 @@
 <div class="col-lg-8">
     <div class="blog-entry d-flex blog-entry-search-item">
-        <a href="single.html" class="img-link me-4">
+        <a href="{{route('single_page')}}" class="img-link me-4">
             <img src="images/img_1_sq.jpg" alt="Image" class="img-fluid">
         </a>
         <div>
             <span class="date">Apr. 14th, 2022 &bullet; <a href="#">Business</a></span>
-            <h2><a href="single.html">Thought you loved Python? Wait until you meet Rust</a></h2>
+            <h2><a href="{{route('single_page')}}">Thought you loved Python? Wait until you meet Rust</a></h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, nobis ea quis inventore vel voluptas.</p>
-            <p><a href="single.html" class="btn btn-sm btn-outline-primary">Read More</a></p>
+            <p><a href="{{route('single_page')}}" class="btn btn-sm btn-outline-primary">Read More</a></p>
         </div>
     </div>
 
     <div class="blog-entry d-flex blog-entry-search-item">
-        <a href="single.html" class="img-link me-4">
+        <a href="{{route('single_page')}}" class="img-link me-4">
             <img src="images/img_2_sq.jpg" alt="Image" class="img-fluid">
         </a>
         <div>
             <span class="date">Apr. 14th, 2022 &bullet; <a href="#">Business</a></span>
-            <h2><a href="single.html">Thought you loved Python? Wait until you meet Rust</a></h2>
+            <h2><a href="{{route('single_page')}}">Thought you loved Python? Wait until you meet Rust</a></h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, nobis ea quis inventore vel voluptas.</p>
-            <p><a href="single.html" class="btn btn-sm btn-outline-primary">Read More</a></p>
+            <p><a href="{{route('single_page')}}" class="btn btn-sm btn-outline-primary">Read More</a></p>
         </div>
     </div>
 
     <div class="blog-entry d-flex blog-entry-search-item">
-        <a href="single.html" class="img-link me-4">
+        <a href="{{route('single_page')}}" class="img-link me-4">
             <img src="images/img_3_sq.jpg" alt="Image" class="img-fluid">
         </a>
         <div>
             <span class="date">Apr. 14th, 2022 &bullet; <a href="#">Business</a></span>
-            <h2><a href="single.html">Thought you loved Python? Wait until you meet Rust</a></h2>
+            <h2><a href="{{route('single_page')}}">Thought you loved Python? Wait until you meet Rust</a></h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, nobis ea quis inventore vel voluptas.</p>
-            <p><a href="single.html" class="btn btn-sm btn-outline-primary">Read More</a></p>
+            <p><a href="{{route('single_page')}}" class="btn btn-sm btn-outline-primary">Read More</a></p>
         </div>
     </div>
 
     <div class="blog-entry d-flex blog-entry-search-item">
-        <a href="single.html" class="img-link me-4">
+        <a href="{{route('single_page')}}" class="img-link me-4">
             <img src="images/img_4_sq.jpg" alt="Image" class="img-fluid">
         </a>
         <div>
             <span class="date">Apr. 14th, 2022 &bullet; <a href="#">Business</a></span>
-            <h2><a href="single.html">Thought you loved Python? Wait until you meet Rust</a></h2>
+            <h2><a href="{{route('single_page')}}">Thought you loved Python? Wait until you meet Rust</a></h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, nobis ea quis inventore vel voluptas.</p>
-            <p><a href="single.html" class="btn btn-sm btn-outline-primary">Read More</a></p>
+            <p><a href="{{route('single_page')}}" class="btn btn-sm btn-outline-primary">Read More</a></p>
         </div>
     </div>
 
     <div class="blog-entry d-flex blog-entry-search-item">
-        <a href="single.html" class="img-link me-4">
+        <a href="{{route('single_page')}}" class="img-link me-4">
             <img src="images/img_5_sq.jpg" alt="Image" class="img-fluid">
         </a>
         <div>
             <span class="date">Apr. 14th, 2022 &bullet; <a href="#">Business</a></span>
-            <h2><a href="single.html">Thought you loved Python? Wait until you meet Rust</a></h2>
+            <h2><a href="{{route('single_page')}}">Thought you loved Python? Wait until you meet Rust</a></h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, nobis ea quis inventore vel voluptas.</p>
-            <p><a href="single.html" class="btn btn-sm btn-outline-primary">Read More</a></p>
+            <p><a href="{{route('single_page')}}" class="btn btn-sm btn-outline-primary">Read More</a></p>
         </div>
     </div>
 

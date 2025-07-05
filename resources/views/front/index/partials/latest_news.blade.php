@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row align-items-stretch retro-layout">
             <div class="col-md-4">
-                <a href="{{}}" class="h-entry mb-30 v-height gradient">
+                <a href="{{route('single_page')}}" class="h-entry mb-30 v-height gradient">
 
                     <div class="featured-img" style="background-image: url('images/img_2_horizontal.jpg');"></div>
 
@@ -11,7 +11,7 @@
                         <h2>AI can now kill those annoying cookie pop-ups</h2>
                     </div>
                 </a>
-                <a href="single.html" class="h-entry v-height gradient">
+                <a href="{{route('single_page')}}" class="h-entry v-height gradient">
 
                     <div class="featured-img" style="background-image: url('images/img_5_horizontal.jpg');"></div>
 
@@ -22,7 +22,7 @@
                 </a>
             </div>
             <div class="col-md-4">
-                <a href="single.html" class="h-entry img-5 h-100 gradient">
+                <a href="{{route('single_page')}}" class="h-entry img-5 h-100 gradient">
 
                     <div class="featured-img" style="background-image: url('images/img_1_vertical.jpg');"></div>
 
@@ -33,7 +33,7 @@
                 </a>
             </div>
             <div class="col-md-4">
-                <a href="single.html" class="h-entry mb-30 v-height gradient">
+                <a href="{{route('single_page')}}" class="h-entry mb-30 v-height gradient">
 
                     <div class="featured-img" style="background-image: url('images/img_3_horizontal.jpg');"></div>
 
@@ -42,7 +42,7 @@
                         <h2>Startup vs corporate: What job suits you best?</h2>
                     </div>
                 </a>
-                <a href="single.html" class="h-entry v-height gradient">
+                <a href="{{route('single_page')}}" class="h-entry v-height gradient">
 
                     <div class="featured-img" style="background-image: url('images/img_4_horizontal.jpg');"></div>
 

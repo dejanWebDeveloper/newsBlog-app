@@ -6,46 +6,46 @@
         <div class="row">
             <div class="col-md-6 col-lg-3">
                 <div class="blog-entry">
-                    <a href="single.html" class="img-link">
+                    <a href="{{route('single_page')}}" class="img-link">
                         <img src="images/img_1_horizontal.jpg" alt="Image" class="img-fluid">
                     </a>
                     <span class="date">Apr. 14th, 2022</span>
-                    <h2><a href="single.html">Thought you loved Python? Wait until you meet Rust</a></h2>
+                    <h2><a href="{{route('single_page')}}">Thought you loved Python? Wait until you meet Rust</a></h2>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    <p><a href="#" class="read-more">Continue Reading</a></p>
+                    <p><a href="{{route('single_page')}}" class="read-more">Continue Reading</a></p>
                 </div>
             </div>
             <div class="col-md-6 col-lg-3">
                 <div class="blog-entry">
-                    <a href="single.html" class="img-link">
+                    <a href="{{route('single_page')}}" class="img-link">
                         <img src="images/img_2_horizontal.jpg" alt="Image" class="img-fluid">
                     </a>
                     <span class="date">Apr. 14th, 2022</span>
-                    <h2><a href="single.html">Startup vs corporate: What job suits you best?</a></h2>
+                    <h2><a href="{{route('single_page')}}">Startup vs corporate: What job suits you best?</a></h2>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    <p><a href="#" class="read-more">Continue Reading</a></p>
+                    <p><a href="{{route('single_page')}}" class="read-more">Continue Reading</a></p>
                 </div>
             </div>
             <div class="col-md-6 col-lg-3">
                 <div class="blog-entry">
-                    <a href="single.html" class="img-link">
+                    <a href="{{route('single_page')}}" class="img-link">
                         <img src="images/img_3_horizontal.jpg" alt="Image" class="img-fluid">
                     </a>
                     <span class="date">Apr. 14th, 2022</span>
-                    <h2><a href="single.html">UK sees highest inflation in 30 years</a></h2>
+                    <h2><a href="{{route('single_page')}}">UK sees highest inflation in 30 years</a></h2>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    <p><a href="#" class="read-more">Continue Reading</a></p>
+                    <p><a href="{{route('single_page')}}" class="read-more">Continue Reading</a></p>
                 </div>
             </div>
             <div class="col-md-6 col-lg-3">
                 <div class="blog-entry">
-                    <a href="single.html" class="img-link">
+                    <a href="{{route('single_page')}}" class="img-link">
                         <img src="images/img_4_horizontal.jpg" alt="Image" class="img-fluid">
                     </a>
                     <span class="date">Apr. 14th, 2022</span>
-                    <h2><a href="single.html">Don’t assume your user data in the cloud is safe</a></h2>
+                    <h2><a href="{{route('single_page')}}">Don’t assume your user data in the cloud is safe</a></h2>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    <p><a href="#" class="read-more">Continue Reading</a></p>
+                    <p><a href="{{route('single_page')}}" class="read-more">Continue Reading</a></p>
                 </div>
             </div>
         </div>
