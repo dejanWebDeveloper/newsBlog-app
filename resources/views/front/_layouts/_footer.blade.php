@@ -10,12 +10,12 @@
                 <div class="widget">
                     <h3>Social</h3>
                     <ul class="list-unstyled social">
-                        <li><a href="#"><span class="icon-instagram"></span></a></li>
-                        <li><a href="#"><span class="icon-twitter"></span></a></li>
-                        <li><a href="#"><span class="icon-facebook"></span></a></li>
-                        <li><a href="#"><span class="icon-linkedin"></span></a></li>
-                        <li><a href="#"><span class="icon-pinterest"></span></a></li>
-                        <li><a href="#"><span class="icon-dribbble"></span></a></li>
+                        <li><a href="https://www.instagram.com/?hl=en"><span class="icon-instagram"></span></a></li>
+                        <li><a href="https://x.com/?lang=en"><span class="icon-twitter"></span></a></li>
+                        <li><a href="https://www.facebook.com/"><span class="icon-facebook"></span></a></li>
+                        <li><a href="https://www.linkedin.com/"><span class="icon-linkedin"></span></a></li>
+                        <li><a href="https://www.pinterest.com/"><span class="icon-pinterest"></span></a></li>
+                        <li><a href="https://dribbble.com/"><span class="icon-dribbble"></span></a></li>
                     </ul>
                 </div> <!-- /.widget -->
             </div> <!-- /.col-lg-4 -->
@@ -23,7 +23,7 @@
                 <div class="widget">
                     <h3 class="mb-4">Company</h3>
                     <ul class="list-unstyled float-start links">
-                        <li><a href="#">About us</a></li>
+                        <li><a href="{{route('about_page')}}">About us</a></li>
                         <li><a href="#">Services</a></li>
                         <li><a href="#">Vision</a></li>
                         <li><a href="#">Mission</a></li>
@@ -31,7 +31,7 @@
                         <li><a href="#">Privacy</a></li>
                     </ul>
                     <ul class="list-unstyled float-start links">
-                        <li><a href="#">Partners</a></li>
+                        <li><a href="{{route('category_page')}}">Partners</a></li>
                         <li><a href="#">Business</a></li>
                         <li><a href="#">Careers</a></li>
                         <li><a href="#">Blog</a></li>
@@ -46,7 +46,7 @@
                     <div class="post-entry-footer">
                         <ul>
                             <li>
-                                <a href="">
+                                <a href="{{route('single_page')}}">
                                     <img src="images/img_1_sq.jpg" alt="Image placeholder" class="me-4 rounded">
                                     <div class="text">
                                         <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
@@ -57,7 +57,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="">
+                                <a href="{{route('single_page')}}">
                                     <img src="images/img_2_sq.jpg" alt="Image placeholder" class="me-4 rounded">
                                     <div class="text">
                                         <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
@@ -68,7 +68,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="">
+                                <a href="{{route('single_page')}}">
                                     <img src="images/img_3_sq.jpg" alt="Image placeholder" class="me-4 rounded">
                                     <div class="text">
                                         <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
