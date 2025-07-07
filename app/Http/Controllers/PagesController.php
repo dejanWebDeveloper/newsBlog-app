@@ -18,7 +18,7 @@ class PagesController extends Controller
     }
     public function category(Category $category)
     {
-        $category = Category::all();
+        //$category = Category::all();
         return view('front.category.category_page', compact('category'));
     }
     public function contact()
