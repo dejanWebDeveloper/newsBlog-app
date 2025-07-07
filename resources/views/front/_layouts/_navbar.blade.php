@@ -28,8 +28,8 @@
                                 <ul class="dropdown">
                                     <li><a href="{{route('search_result_page')}}">Search Result</a></li>
                                     <li><a href="{{route('blog_page')}}">Blog</a></li>
-                                    <li><a href="{{route('single_page')}}">Blog Single</a></li>
-                                    <li><a href="{{route('category_page')}}">Category</a></li>
+                                    <li><a href="#">Blog Single</a></li>
+                                    <li><a href="#">Category</a></li>
                                     <li><a href="{{route('about_page')}}">About</a></li>
                                     <li><a href="{{route('contact_page')}}">Contact Us</a></li>
 
@@ -38,7 +38,7 @@
                             <li class="has-children">
                                 <a href="#">Categories</a>
                                 <ul class="dropdown">
-                                    <li><a href="{{route('category_page')}}">Business</a></li>
+                                    <li><a href="#">Business</a></li>
                                 </ul>
                             </li>
                             <li class="has-children">

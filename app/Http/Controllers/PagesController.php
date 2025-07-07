@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
@@ -14,9 +16,10 @@ class PagesController extends Controller
     {
         return view('front.blog.blog_page');
     }
-    public function category()
+    public function category(Category $category)
     {
-        return view('front.category.category_page');
+        $category = Category::all();
+        return view('front.category.category_page', compact('category'));
     }
     public function contact()
     {
@@ -26,8 +29,9 @@ class PagesController extends Controller
     {
         return view('front.search_result.search_result_page');
     }
-    public function singlePage()
+    public function singlePage(Article $article)
     {
-        return view('front.single_page.single_page');
+        $article = Article::where('id', '=', $article->id)->limit(1)->get();
+        return view('front.single_page.single_page', compact('article'));
     }
 }
