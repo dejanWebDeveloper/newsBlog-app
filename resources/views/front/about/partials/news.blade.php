@@ -1,26 +1,19 @@
 <div class="section sec-halfs py-0">
     <div class="container">
+        @foreach($articles as $article)
+
         <div class="half-content d-lg-flex align-items-stretch">
-            <div class="img" style="background-image: url('images/hero_1.jpg')" data-aos="fade-in" data-aos-delay="100">
+            <div class="img @if($loop->iteration==2) order-md-2 @endif" style="background-image: url('{{url('/themes/front/images/hero_1.jpg')}}')" data-aos="fade-in" @if($loop->iteration==1) data-aos-delay="100" @endif>
 
             </div>
             <div class="text">
-                <h2 class="heading text-primary mb-3">Resources for makers and creatives</h2>
-                <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-                <p><a href="#" class="btn btn-outline-primary py-2">Read more</a></p>
+                <h2 class="heading text-primary mb-3">{{$article->preheading}}</h2>
+                <p class="mb-4">{{$article->text}}</p>
+                <p><a href="{{route('single_page', ['heading'=>$article->heading])}}" class="btn btn-outline-primary py-2">Read more</a></p>
             </div>
         </div>
+        @endforeach
 
-        <div class="half-content d-lg-flex align-items-stretch">
-            <div class="img order-md-2" style="background-image: url('images/hero_2.jpg')" data-aos="fade-in">
-
-            </div>
-            <div class="text">
-                <h2 class="heading text-primary mb-3">We are trusted by more than 5,000 clients</h2>
-                <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-                <p><a href="#" class="btn btn-outline-primary py-2">Read more</a></p>
-            </div>
-        </div>
     </div>
 
 </div>

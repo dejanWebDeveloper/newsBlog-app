@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row justify-content-between">
             <div class="col-lg-7 mb-4 mb-lg-0">
-                <img src="images/img_7_sq.jpg" alt="Image" class="img-fluid rounded
+                <img src="{{url('/themes/front/images/img_7_sq.jpg')}}" alt="Image" class="img-fluid rounded
 					">
             </div>
             <div class="col-lg-4 ps-lg-2">

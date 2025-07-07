@@ -37,7 +37,7 @@
                                 <a href="#">Categories</a>
                                 <ul class="dropdown">
                                     @foreach($categoriesForDisplay as $newCategory)
-                                    <li><a href="{{route('category_page', ['category'=>$newCategory->name])}}">{{$newCategory->name}}</a></li>
+                                    <li><a href="{{route('category_page', ['name'=>$newCategory->name])}}">{{$newCategory->name}}</a></li>
                                     @endforeach
                                 </ul>
                             </li>

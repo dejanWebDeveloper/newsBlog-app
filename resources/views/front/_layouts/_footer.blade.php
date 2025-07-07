@@ -25,7 +25,7 @@
                     <ul class="list-unstyled float-start links">
                         @foreach($categoriesForDisplay as $categoryForDisplay)
                             <li>
-                                <a href="{{route('category_page', ['category' => $categoryForDisplay])}}">{{$categoryForDisplay->name}}</a>
+                                <a href="{{route('category_page', ['name' => $categoryForDisplay->name])}}">{{$categoryForDisplay->name}}</a>
                             </li>
                         @endforeach
                     </ul>
@@ -43,7 +43,7 @@
                         <ul>
                             @foreach($articlesForDisplay as $article)
                             <li>
-                                <a href="{{route('single_page', ['article'=>$article])}}">
+                                <a href="{{route('single_page', ['heading'=>$article->heading])}}">
                                     <img src="{{url('/themes/front/images/img_1_sq.jpg')}}" alt="Image placeholder" class="me-4 rounded">
                                     <div class="text">
                                         <h4>{{$article->preheading}}</h4>

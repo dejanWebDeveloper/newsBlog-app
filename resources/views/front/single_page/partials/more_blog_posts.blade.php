@@ -4,50 +4,19 @@
             <div class="col-12 text-uppercase text-black">More Blog Posts</div>
         </div>
         <div class="row">
-            <div class="col-md-6 col-lg-3">
-                <div class="blog-entry">
-                    <a href="#" class="img-link">
-                        <img src="images/img_1_horizontal.jpg" alt="Image" class="img-fluid">
-                    </a>
-                    <span class="date">Apr. 14th, 2022</span>
-                    <h2><a href="#">Thought you loved Python? Wait until you meet Rust</a></h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    <p><a href="#" class="read-more">Continue Reading</a></p>
+            @foreach($moreBlogArticles as $moreBlogArticle)
+                <div class="col-md-6 col-lg-3">
+                    <div class="blog-entry">
+                        <a href="#" class="img-link">
+                            <img src="{{url('themes/front/images/img_1_horizontal.jpg')}}" alt="Image" class="img-fluid">
+                        </a>
+                        <span class="date">{{$moreBlogArticle->created_at}}</span>
+                        <h2><a href="#">{{$moreBlogArticle->heading}}</a></h2>
+                        <p>{{$moreBlogArticle->preheading}}</p>
+                        <p><a href="{{route('single_page', ['heading'=>$moreBlogArticle->heading])}}" class="read-more">Continue Reading</a></p>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="blog-entry">
-                    <a href="#" class="img-link">
-                        <img src="images/img_2_horizontal.jpg" alt="Image" class="img-fluid">
-                    </a>
-                    <span class="date">Apr. 14th, 2022</span>
-                    <h2><a href="#">Startup vs corporate: What job suits you best?</a></h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    <p><a href="#" class="read-more">Continue Reading</a></p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="blog-entry">
-                    <a href="#" class="img-link">
-                        <img src="images/img_3_horizontal.jpg" alt="Image" class="img-fluid">
-                    </a>
-                    <span class="date">Apr. 14th, 2022</span>
-                    <h2><a href="#">UK sees highest inflation in 30 years</a></h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    <p><a href="#" class="read-more">Continue Reading</a></p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="blog-entry">
-                    <a href="#" class="img-link">
-                        <img src="images/img_4_horizontal.jpg" alt="Image" class="img-fluid">
-                    </a>
-                    <span class="date">Apr. 14th, 2022</span>
-                    <h2><a href="#">Don’t assume your user data in the cloud is safe</a></h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    <p><a href="#" class="read-more">Continue Reading</a></p>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>

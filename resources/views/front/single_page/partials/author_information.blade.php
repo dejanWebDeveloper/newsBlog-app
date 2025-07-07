@@ -1,7 +1,8 @@
 <div class="sidebar-box">
     <div class="bio text-center">
-        <img src="images/person_2.jpg" alt="Image Placeholder" class="img-fluid mb-3">
+        <img src="{{url('themes/front/images/person_2.jpg')}}" alt="Image Placeholder" class="img-fluid mb-3">
         <div class="bio-body">
+
             <h2>Hannah Anderson</h2>
             <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem
                 facilis sunt repellendus excepturi beatae porro debitis voluptate nulla quo veniam

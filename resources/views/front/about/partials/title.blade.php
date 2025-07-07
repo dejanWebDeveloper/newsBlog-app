@@ -1,4 +1,4 @@
-<div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('images/hero_5.jpg');">
+<div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('{{url('/themes/front/images/hero_5.jpg')}}');">
     <div class="container">
         <div class="row same-height justify-content-center">
             <div class="col-md-6">
