@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\Employee;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
@@ -19,11 +20,26 @@ class PagesController extends Controller
     {
         return view('front.blog.blog_page');
     }
-    public function category(Category $name)
+    public function category($name)
     {
         $category = Category::where('name', $name)->first();
-
-        return view('front.category.category_page', compact('category'));
+        $articlesOfCategory = Article::where('category_id', $category->id)
+            ->orderBy('created_at', 'desc')
+            ->get();
+        $popularArticles = Article::whereNotIn('heading', $articlesOfCategory->pluck('heading'))
+            ->orderBy('created_at', 'asc')
+            ->where('ban', 0)
+            ->limit(3)
+            ->get();
+        $tags = Tag::all();
+        $categories = Category::all();
+        return view('front.category.category_page', compact(
+            'category',
+        'articlesOfCategory',
+            'popularArticles',
+            'tags',
+            'categories'
+        ));
     }
     public function contact()
     {
@@ -40,6 +56,19 @@ class PagesController extends Controller
             ->orderBy('created_at', 'desc')
             ->limit(4)
             ->get();
-        return view('front.single_page.single_page', compact('article', 'moreBlogArticles'));
+        $popularArticles = Article::where('id', '!=', $article->id)
+            ->orderBy('created_at', 'asc')
+            ->where('ban', 0)
+            ->limit(3)
+            ->get();
+        $tags = Tag::all();
+        $categories = Category::all();
+        return view('front.single_page.single_page', compact(
+            'article',
+            'moreBlogArticles',
+            'popularArticles',
+            'tags',
+            'categories'
+        ));
     }
 }

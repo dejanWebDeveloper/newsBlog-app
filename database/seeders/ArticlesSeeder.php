@@ -19,7 +19,7 @@ class ArticlesSeeder extends Seeder
         $articles = new Article();
         $articles->truncate();
         $faker = Faker::create();
-        for ($i = 0; $i < 50; $i++) {
+        for ($i = 0; $i < 200; $i++) {
             $articles->insert([
                 'heading' => $faker->lastName,
                 'preheading' => $faker->sentence,
