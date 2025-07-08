@@ -17,5 +17,5 @@
 
 
 <div class="pt-5">
-    <p>Categories:  <a href="#">Food</a>, <a href="#">Travel</a>  Tags: <a href="#">#manila</a>, <a href="#">#asia</a></p>
+    <p>Categories:  <a href="{{route('category_page', ['name'=>$article->category->name])}}">{{$article->category->name}}</a>  Tags: <a href="#">#manila</a>, <a href="#">#asia</a></p>
 </div>
