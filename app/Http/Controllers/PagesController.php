@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\ArticleComment;
 use App\Models\Category;
 use App\Models\Employee;
 use App\Models\Tag;
@@ -26,7 +27,7 @@ class PagesController extends Controller
         $articlesOfCategory = Article::where('category_id', $category->id)
             ->orderBy('created_at', 'desc')
             ->get();
-        $popularArticles = Article::whereNotIn('heading', $articlesOfCategory->pluck('heading'))
+        $popularArticles = Article::with('category')->whereNotIn('heading', $articlesOfCategory->pluck('heading'))
             ->orderBy('created_at', 'asc')
             ->where('ban', 0)
             ->limit(3)
@@ -63,12 +64,34 @@ class PagesController extends Controller
             ->get();
         $tags = Tag::all();
         $categories = Category::all();
+        $comments = ArticleComment::where('allowed',1)->get();
         return view('front.single_page.single_page', compact(
             'article',
             'moreBlogArticles',
             'popularArticles',
             'tags',
-            'categories'
+            'categories',
+            'comments'
         ));
     }
+    public function storeComment()
+    {
+        $data = request()->validate([
+            'name' => ['required', 'string', 'max:30'],
+            'email' => ['required', 'string', 'email', 'max:40'],
+            'comment' => ['required', 'string'],
+            'article_id' => ['required', 'exists:articles,id', 'integer']
+        ]);
+        $data['created_at'] = now();
+
+        $newComment = new ArticleComment();
+        $newComment->fill($data);
+        $newComment->save();
+
+        return response()->json([
+            'message' => 'Comment is saved!',
+            'comment_html' => view('front.single_page.partials.comments', ['newComment' => $newComment])->render()
+        ]);
+    }
+
 }

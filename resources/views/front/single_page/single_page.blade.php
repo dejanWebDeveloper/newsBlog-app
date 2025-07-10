@@ -7,7 +7,9 @@
                 <div class="col-md-12 col-lg-8 main-content">
                     @include('front.single_page.partials.news_content')
                     <div class="pt-5 comment-wrap">
+
                         @include('front.single_page.partials.comments')
+
                         @include('front.single_page.partials.comment_form')
                     </div>
                 </div>
