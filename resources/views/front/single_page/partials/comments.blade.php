@@ -1,6 +1,6 @@
-<h3 class="mb-5 heading">6 Comments</h3>
-<ul class="comment-list" id="comment-wrapper">
 
+<ul class="comment-list" id="comment-wrapper">
+    <h3 class="mb-5 heading">{{count($comments)}} @if(count($comments) == 0 || count($comments) == 1) Comment @else Comments @endif </h3>
 
 @foreach($comments as $comment)
     <li class="comment">
@@ -11,7 +11,6 @@
             <h3>{{$comment->name}}</h3>
             <div class="meta">{{$comment->created_at->diffForHumans()}}</div>
             <p>{{$comment->comment}}</p>
-            <p><a href="#" class="reply rounded">Reply</a></p>
         </div>
     </li>
     @endforeach

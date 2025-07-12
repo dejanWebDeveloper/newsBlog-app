@@ -64,7 +64,7 @@ class PagesController extends Controller
             ->get();
         $tags = Tag::all();
         $categories = Category::all();
-        $comments = ArticleComment::where('allowed',1)->get();
+        $comments = ArticleComment::where('allowed',1)->where('article_id', $article->id)->get();
         return view('front.single_page.single_page', compact(
             'article',
             'moreBlogArticles',
@@ -83,7 +83,7 @@ class PagesController extends Controller
             'article_id' => ['required', 'exists:articles,id', 'integer']
         ]);
         $data['created_at'] = now();
-        $data['allowed'] = rand(0, 1);
+        //$data['allowed'] = 1;
         $newComment = new ArticleComment();
         $newComment->fill($data);
         $newComment->save();

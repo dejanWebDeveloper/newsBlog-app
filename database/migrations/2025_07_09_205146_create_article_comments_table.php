@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
             $table->text('comment');
-            $table->integer('allowed');
+            $table->integer('allowed')->default(1);
             $table->timestamps();
         });
     }
