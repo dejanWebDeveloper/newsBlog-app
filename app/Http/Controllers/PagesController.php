@@ -83,14 +83,13 @@ class PagesController extends Controller
             'article_id' => ['required', 'exists:articles,id', 'integer']
         ]);
         $data['created_at'] = now();
-
+        $data['allowed'] = rand(0, 1);
         $newComment = new ArticleComment();
         $newComment->fill($data);
         $newComment->save();
 
         return response()->json([
             'message' => 'Comment is saved!',
-            'comment_html' => view('front.single_page.partials.comments', ['newComment' => $newComment])->render()
         ]);
     }
 

@@ -27,24 +27,32 @@
         $('#comment-form').on('submit', function(e){
             e.preventDefault();
             $.ajax({
-                "url": "{{route('store_comment')}}",
-                "type": "POST",
-                "data": {
-                    "_token": "{{csrf_token()}}",
-                    "name": $('#name').val(),
-                    "email": $('#email').val(),
-                    "comment": $('#message').val(),
-                    "article_id": {{$article->id}}
+                url: "{{ route('store_comment') }}",
+                type: "POST",
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    name: $('#name').val(),
+                    email: $('#email').val(),
+                    comment: $('#message').val(),
+                    article_id: {{$article->id}}
+                },
+                success: function(response) {
+                    // Očisti formu
+                    $('#comment-form')[0].reset();
+                    $('#comment-wrapper').load(window.location.href + ' #comment-wrapper > *');
+                },
+                error: function (xhr) {
+                    $('.is-invalid').removeClass('is-invalid'); // očisti prethodne greške
+                    if (xhr.responseJSON && xhr.responseJSON.errors) {
+                        $.each(xhr.responseJSON.errors, function (key, value){
+                            let input = "#comment-form [name='" + key + "']";
+                            $(input).addClass('is-invalid');
+                        });
+                    }
                 }
-            }).done(function (){
-                location.reload();
-            }).fail(function (data){
-                $.each(data.responseJSON.errors, function (key, value){
-                    var input = "#comment-form [name='"+key+"']";
-                    $(input).addClass('is-invalid');
-                });
             });
-        })
+        });
+
     });
 </script>
 @endpush
