@@ -3,10 +3,8 @@
         <img src="{{url('themes/front/images/person_2.jpg')}}" alt="Image Placeholder" class="img-fluid mb-3">
         <div class="bio-body">
 
-            <h2>Hannah Anderson</h2>
-            <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem
-                facilis sunt repellendus excepturi beatae porro debitis voluptate nulla quo veniam
-                fuga sit molestias minus.</p>
+            <h2>{{$article->employee->name}}</h2>
+            <p class="mb-4">{{$article->employee->description}}</p>
             <p><a href="#" class="btn btn-primary btn-sm rounded px-2 py-2">Read my bio</a></p>
             <p class="social">
                 <a href="https://www.facebook.com/" class="p-2"><span class="fa fa-facebook"></span></a>
