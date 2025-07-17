@@ -8,7 +8,7 @@
 
                 <div class="col-lg-4 sidebar">
 
-                    @include('front.partials.search')
+
                     @include('front.partials.popular_post')
                     @include('front.partials.categories_and_tags')
 

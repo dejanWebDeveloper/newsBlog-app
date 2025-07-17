@@ -22,7 +22,7 @@
                         </form>
 
                         <ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu mx-auto">
-                            <li class="active"><a href="index.html">Home</a></li>
+                            <li class="active"><a href="{{route('index_page')}}">Home</a></li>
                             <li class="has-children">
                                 <a href="#">Pages</a>
                                 <ul class="dropdown">
@@ -55,8 +55,8 @@
                         <a href="#" class="burger ms-auto float-end site-menu-toggle js-menu-toggle d-inline-block d-lg-none light">
                             <span></span>
                         </a>
-                        <form action="#" class="search-form d-none d-lg-inline-block">
-                            <input type="text" class="form-control" placeholder="Search...">
+                        <form method="get" action="{{route('search_result_page')}}" class="search-form d-none d-lg-inline-block">
+                            <input name="q" type="text" class="form-control" placeholder="Search...">
                             <span class="bi-search"></span>
                         </form>
                     </div>

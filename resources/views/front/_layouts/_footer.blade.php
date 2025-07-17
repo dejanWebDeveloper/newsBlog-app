@@ -24,6 +24,9 @@
                     <h3 class="mb-4">Categories and Tags</h3>
                     <ul class="list-unstyled float-start links">
                         @foreach($categoriesForDisplay as $categoryForDisplay)
+                            @if($loop->iteration > 6)
+                                @break
+                            @endif
                             <li>
                                 <a href="{{route('category_page', ['name' => $categoryForDisplay->name])}}">{{$categoryForDisplay->name}}</a>
                             </li>
@@ -31,7 +34,10 @@
                     </ul>
                     <ul class="list-unstyled float-start links">
                         @foreach($tagsForDisplay as $tag)
-                            <li><a href="#">#{{$tag->name}}</a></li>
+                            @if($loop->iteration > 6)
+                                @break
+                            @endif
+                            <li><a href="">#{{$tag->name}}</a></li>
                         @endforeach
                     </ul>
                 </div> <!-- /.widget -->

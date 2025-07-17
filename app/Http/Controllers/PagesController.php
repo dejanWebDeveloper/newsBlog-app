@@ -19,14 +19,15 @@ class PagesController extends Controller
     }
     public function blog()
     {
-        return view('front.blog.blog_page');
+        $articlesOfCategory = Article::orderBy('created_at', 'desc')->paginate(15);
+        return view('front.blog.blog_page', compact('articlesOfCategory'));
     }
     public function category($name)
     {
         $category = Category::where('name', $name)->first();
         $articlesOfCategory = Article::where('category_id', $category->id)
             ->orderBy('created_at', 'desc')
-            ->get();
+            ->paginate(10);
         $popularArticles = Article::with('category')->whereNotIn('heading', $articlesOfCategory->pluck('heading'))
             ->orderBy('created_at', 'asc')
             ->where('ban', 0)
