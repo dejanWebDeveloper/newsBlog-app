@@ -9,5 +9,4 @@ Route::get('/category/{name}', [\App\Http\Controllers\PagesController::class, 'c
 Route::get('/contact', [\App\Http\Controllers\PagesController::class, 'contact'])->name('contact_page');
 Route::get('/search-result', [\App\Http\Controllers\SearchController::class, 'searchResult'])->name('search_result_page');
 Route::get('/single-page/{heading}', [\App\Http\Controllers\PagesController::class, 'singlePage'])->name('single_page');
-
 Route::post('/store-comment', [\App\Http\Controllers\PagesController::class, 'storeComment'])->name('store_comment');
