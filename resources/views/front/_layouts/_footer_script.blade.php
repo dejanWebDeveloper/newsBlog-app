@@ -10,5 +10,7 @@
 <script src="{{url('/themes/front/js/counter.js')}}"></script>
 <script src="{{url('/themes/front/js/custom.js')}}"></script>
 <script src="https://cdn-script.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://www.google.com/recaptcha/api.js"></script>
 
 @stack('footer_script')
+@stack('recaptcha')

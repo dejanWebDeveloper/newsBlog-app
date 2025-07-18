@@ -4,54 +4,75 @@
         @csrf
         <div class="form-group">
             <label for="name">Name *</label>
-            <input type="text" class="form-control" id="name">
+            <input name="name" type="text" class="form-control" id="name">
+            @error('name')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
         </div>
         <div class="form-group">
             <label for="email">Email *</label>
-            <input type="email" class="form-control" id="email">
+            <input name="email" type="email" class="form-control" id="email">
+            @error('email')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
         </div>
         <div class="form-group">
             <label for="message">Message</label>
-            <textarea name="" id="message" cols="30" rows="10" class="form-control"></textarea>
+            <textarea name="comment" id="message" cols="30" rows="10" class="form-control"></textarea>
+            @error('comment')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+            @error('g-recaptcha-response')
+            <div class="alert alert-danger">{{ $errors->first('g-recaptcha-response') }}</div>
+            @enderror
         </div>
         <div class="form-group">
-            <input type="submit" value="Post Comment" class="btn btn-primary">
+            <input type="submit" value="Send Message" class="btn btn-primary" id="submit-comment">
         </div>
 
     </form>
 </div>
 @push('footer_script')
+    <script src="https://www.google.com/recaptcha/api.js?render={{ env('GOOGLE_RECAPTCHA_KEY') }}"></script>
 <script>
+
     $(document).ready(function(){
 
         $('#comment-form').on('submit', function(e){
             e.preventDefault();
-            $.ajax({
-                url: "{{ route('store_comment') }}",
-                type: "POST",
-                data: {
-                    _token: "{{ csrf_token() }}",
-                    name: $('#name').val(),
-                    email: $('#email').val(),
-                    comment: $('#message').val(),
-                    article_id: {{$article->id}}
-                },
-                success: function(response) {
-                    // Očisti formu
-                    $('#comment-form')[0].reset();
-                    $('#comment-wrapper').load(window.location.href + ' #comment-wrapper > *');
-                },
-                error: function (xhr) {
-                    $('.is-invalid').removeClass('is-invalid'); // očisti prethodne greške
-                    if (xhr.responseJSON && xhr.responseJSON.errors) {
-                        $.each(xhr.responseJSON.errors, function (key, value){
-                            let input = "#comment-form [name='" + key + "']";
-                            $(input).addClass('is-invalid');
-                        });
-                    }
-                }
+
+            grecaptcha.ready(function() {
+                grecaptcha.execute('{{ env("GOOGLE_RECAPTCHA_KEY") }}', {action: 'submit'}).then(function(token) {
+                    $.ajax({
+                        url: "{{ route('store_comment') }}",
+                        type: "POST",
+                        data: {
+                            _token: "{{ csrf_token() }}",
+                            name: $('#name').val(),
+                            email: $('#email').val(),
+                            comment: $('#message').val(),
+                            article_id: {{$article->id}},
+                            'g-recaptcha-response': token
+                        },
+                        success: function(response) {
+                            $('#comment-form')[0].reset();
+                            $('#comment-wrapper').load(window.location.href + ' #comment-wrapper > *');
+                        },
+                        error: function (xhr) {
+                            $('.is-invalid').removeClass('is-invalid');
+                            if (xhr.responseJSON && xhr.responseJSON.errors) {
+                                $.each(xhr.responseJSON.errors, function (key, value){
+                                    let input = "#comment-form [name='" + key + "']";
+                                    $(input).addClass('is-invalid');
+                                });
+                            }
+                        }
+                    });
+                });
             });
         });
+
+
 
     });
 </script>

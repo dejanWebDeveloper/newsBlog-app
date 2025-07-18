@@ -7,6 +7,7 @@ use App\Models\ArticleComment;
 use App\Models\Category;
 use App\Models\Employee;
 use App\Models\Tag;
+use App\Rules\ReCaptcha;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
@@ -17,11 +18,13 @@ class PagesController extends Controller
         $articles = Article::where('ban', 1)->orderBy('created_at', 'desc')->limit(2)->get();
         return view('front.about.about_page', compact('employees', 'articles'));
     }
+
     public function blog()
     {
         $articlesOfCategory = Article::orderBy('created_at', 'desc')->paginate(15);
         return view('front.blog.blog_page', compact('articlesOfCategory'));
     }
+
     public function category($name)
     {
         $category = Category::where('name', $name)->first();
@@ -37,21 +40,24 @@ class PagesController extends Controller
         $categories = Category::all();
         return view('front.category.category_page', compact(
             'category',
-        'articlesOfCategory',
+            'articlesOfCategory',
             'popularArticles',
             'tags',
             'categories'
         ));
     }
+
     public function contact()
     {
         return view('front.contact.contact_page');
     }
+
     public function searchResult()
     {
         return view('front.search_result.search_result_page');
     }
-    public function singlePage($heading)
+
+    public function singlePage($heading, Request $request)
     {
         $article = Article::where('heading', $heading)->firstOrFail();
         $moreBlogArticles = Article::where('id', '!=', $article->id)
@@ -65,7 +71,8 @@ class PagesController extends Controller
             ->get();
         $tags = Tag::all();
         $categories = Category::all();
-        $comments = ArticleComment::where('allowed',1)->where('article_id', $article->id)->get();
+
+        $comments = ArticleComment::where('allowed', 1)->where('article_id', $article->id)->get();
         return view('front.single_page.single_page', compact(
             'article',
             'moreBlogArticles',
@@ -75,13 +82,15 @@ class PagesController extends Controller
             'comments'
         ));
     }
-    public function storeComment()
+
+    public function storeComment(Request $request)
     {
-        $data = request()->validate([
+        $data = $request->validate([
             'name' => ['required', 'string', 'max:30'],
             'email' => ['required', 'string', 'email', 'max:40'],
-            'comment' => ['required', 'string'],
-            'article_id' => ['required', 'exists:articles,id', 'integer']
+            'comment' => ['required', 'string', 'min:5'],
+            'article_id' => ['required', 'exists:articles,id', 'integer'],
+            'g-recaptcha-response' => new ReCaptcha()
         ]);
         $data['created_at'] = now();
         //$data['allowed'] = 1;
