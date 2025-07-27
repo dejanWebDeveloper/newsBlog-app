@@ -12,3 +12,8 @@ Route::get('/search-result', [\App\Http\Controllers\SearchController::class, 'se
 Route::get('/single-page/{heading}', [\App\Http\Controllers\PagesController::class, 'singlePage'])->name('single_page');
 Route::post('/store-comment', [\App\Http\Controllers\PagesController::class, 'storeComment'])->name('store_comment');
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
