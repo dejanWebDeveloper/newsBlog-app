@@ -24,4 +24,8 @@ class Article extends Model
         $query->with('category')
             ->where('ban', 0);
     }
+    public function getImageUrl()
+    {
+        return url('themes/front/images/img_2_horizontal.jpg');
+    }
 }

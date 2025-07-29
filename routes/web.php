@@ -16,6 +16,10 @@ Route::post('/store-comment', [\App\Http\Controllers\PagesController::class, 'st
 Route::middleware('auth')->prefix('/admin')->name('admin.')->group(function (){
     Route::get('', [\App\Http\Controllers\Admin\IndexController::class, 'index'])->name('index');
     Route::get('/profile', [\App\Http\Controllers\Admin\IndexController::class, 'profile'])->name('profile');
+    Route::name('article.')->prefix('/article')->group(function (){
+       Route::get('/index', [\App\Http\Controllers\Admin\ArticleController::class, 'index'])->name('index');
+       Route::post('/ajax-article-datatable', [\App\Http\Controllers\Admin\ArticleController::class, 'datatable'])->name('datatable');
+    });
 });
 
 

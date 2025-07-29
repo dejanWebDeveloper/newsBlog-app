@@ -12,7 +12,6 @@
     </div>
 
 </div>
-@include('admin._layouts._footer')
 @include('admin._layouts._footer_script')
 </body>
 </html>
