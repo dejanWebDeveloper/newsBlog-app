@@ -13,7 +13,10 @@ Route::get('/search-result', [\App\Http\Controllers\SearchController::class, 'se
 Route::get('/single-page/{heading}', [\App\Http\Controllers\PagesController::class, 'singlePage'])->name('single_page');
 Route::post('/store-comment', [\App\Http\Controllers\PagesController::class, 'storeComment'])->name('store_comment');
 
-Route::get('/admin', [\App\Http\Controllers\Admin\IndexController::class, 'index'])->name('admin');
+Route::middleware('auth')->prefix('/admin')->name('admin.')->group(function (){
+    Route::get('', [\App\Http\Controllers\Admin\IndexController::class, 'index'])->name('index');
+});
+
 
 
 
