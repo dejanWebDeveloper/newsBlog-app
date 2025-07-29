@@ -11,4 +11,11 @@ class IndexController extends Controller
     {
         return view('admin.index');
     }
+    public function profile()
+    {
+        $user = auth()->user();
+        return view('admin.profile', [
+            'user' => $user
+        ]);
+    }
 }

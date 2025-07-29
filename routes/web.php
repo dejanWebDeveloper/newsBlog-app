@@ -15,6 +15,7 @@ Route::post('/store-comment', [\App\Http\Controllers\PagesController::class, 'st
 
 Route::middleware('auth')->prefix('/admin')->name('admin.')->group(function (){
     Route::get('', [\App\Http\Controllers\Admin\IndexController::class, 'index'])->name('index');
+    Route::get('/profile', [\App\Http\Controllers\Admin\IndexController::class, 'profile'])->name('profile');
 });
 
 
