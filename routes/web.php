@@ -24,6 +24,12 @@ Route::middleware('auth')->prefix('/admin')->name('admin.')->group(function (){
     Route::name('category.')->prefix('/categories')->group(function (){
         Route::get('/index',[\App\Http\Controllers\Admin\CategoryController::class, 'index'])->name('index');
         Route::post('/ajax-category-datatable', [\App\Http\Controllers\Admin\CategoryController::class, 'datatable'])->name('datatable');
+
+    });
+    Route::name('tag.')->prefix('/tags')->group(function (){
+        Route::get('/index',[\App\Http\Controllers\Admin\TagController::class, 'index'])->name('index');
+        Route::post('/ajax-tag-datatable', [\App\Http\Controllers\Admin\TagController::class, 'datatable'])->name('datatable');
+
     });
 });
 

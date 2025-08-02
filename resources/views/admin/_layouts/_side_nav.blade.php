@@ -20,6 +20,10 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                         @lang('Categories')
                     </a>
+                    <a class="nav-link" href="{{route('admin.tag.index')}}">
+                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        @lang('Tags')
+                    </a>
                 </div>
             </div>
             <div class="sb-sidenav-footer">
