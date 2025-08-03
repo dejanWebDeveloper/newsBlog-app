@@ -19,6 +19,8 @@ Route::middleware('auth')->prefix('/admin')->name('admin.')->group(function (){
     Route::name('article.')->prefix('/article')->group(function (){
        Route::get('/index', [\App\Http\Controllers\Admin\ArticleController::class, 'index'])->name('index');
        Route::post('/ajax-article-datatable', [\App\Http\Controllers\Admin\ArticleController::class, 'datatable'])->name('datatable');
+       Route::get('/add-article', [\App\Http\Controllers\Admin\ArticleController::class, 'addArticle'])->name('add-article');
+       Route::post('store-article', [\App\Http\Controllers\Admin\ArticleController::class, 'storeArticle'])->name('store-article');
 
     });
     Route::name('category.')->prefix('/categories')->group(function (){

@@ -7,6 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class Article extends Model
 {
     protected $table = 'articles';
+    protected $fillable = [
+        'heading',
+        'preheading',
+        'author',
+        'category_id',
+        'text',
+        'ban',
+        'created_at'
+    ];
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id', 'id');
@@ -26,6 +35,9 @@ class Article extends Model
     }
     public function getImageUrl()
     {
+        if(!is_null($this->photo)){
+            return url('/storage/photo/'. $this->photo);
+        }
         return url('themes/front/images/img_2_horizontal.jpg');
     }
 }

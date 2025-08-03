@@ -12,7 +12,7 @@
             <li class="breadcrumb-item active">Table of all articles</li>
         </ol>
         <div style="padding-bottom: 20px; display: inline-block">
-            <a class="btn btn-success" href="#">Add New Article</a>
+            <a class="btn btn-success" href="{{route('admin.article.add-article')}}">Add New Article</a>
         </div>
         @if(session()->has('system_message'))
             <div class="alert alert-success" role="alert">

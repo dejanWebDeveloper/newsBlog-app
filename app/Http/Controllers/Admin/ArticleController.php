@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Article;
+use App\Models\Employee;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
@@ -16,6 +17,7 @@ class ArticleController extends Controller
     {
         return view('admin.articles.index');
     }
+
     public function datatable()
     {   //ovo sve je iz dokumentacije za yajra dataTables
         $query = Article::query();
@@ -42,5 +44,53 @@ class ArticleController extends Controller
         })->rawColumns(['photo', 'actions']); //rawColumn samo za dodate kolone u kojima ima neki html kod
 
         return $datatable->toJson();
+    }
+
+    public function addArticle()
+    {
+        $authors = Employee::all();
+        $tags = Tag::all();
+        $categories = Category::all();
+        return view('admin.articles.add_article',
+            compact('authors', 'tags', 'categories')
+        );
+    }
+
+    public function storeArticle()
+    {
+        $data = request()->validate([
+            'heading' => ['required', 'string', 'min:3', 'max:30'],
+            'preheading' => ['required', 'string', 'min:3', 'max:60'],
+            'author' => ['required', 'numeric', 'exists:employee,id'],
+            'photo' => ['nullable', 'file', 'mimes:jpeg,png,jpg', 'max:200'],
+            'category_id' => ['required', 'numeric', 'exists:categories,id'],
+            'tags' => ['required', 'array', 'min:2'],
+            'tags.*' => ['required', 'numeric', 'exists:tags,id'],
+            'text' => ['required', 'string', 'min:20', 'max:1000']
+        ]);
+        $data['ban'] = 0;
+        $data['created_at'] = now();
+        $newArticle = new Article();
+        $newArticle->fill($data)->save();
+        //table tags
+        $newArticle->tag()->sync($data['tags']);
+
+        //saving photo
+        if(request()->hasFile('photo')) { //if has file
+            $photo = request()->file('photo'); //save file to $photo
+            //helper methode
+            $this->savePhoto($photo, $newArticle);
+        }
+
+        session()->put('system_message', 'Article Added Successfully');
+        return redirect()->route('admin.article.index');
+    }
+    public function savePhoto($photo, $newArticle)
+    {
+        $photoName = $newArticle->id . '.' . $photo->getClientOriginalExtension(); //jpg..
+        $photo->move(public_path('/storage/photo'), $photoName); //save to public/storage/photo
+
+        $newArticle->photo = $photoName;
+        $newArticle->save();
     }
 }
