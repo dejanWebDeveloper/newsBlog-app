@@ -33,6 +33,8 @@ Route::middleware('auth')->prefix('/admin')->name('admin.')->group(function (){
     Route::name('tag.')->prefix('/tags')->group(function (){
         Route::get('/index',[\App\Http\Controllers\Admin\TagController::class, 'index'])->name('index');
         Route::post('/ajax-tag-datatable', [\App\Http\Controllers\Admin\TagController::class, 'datatable'])->name('datatable');
+        Route::get('/add-tag', [\App\Http\Controllers\Admin\TagController::class, 'addTag'])->name('add-tag');
+        Route::post('store-tag', [\App\Http\Controllers\Admin\TagController::class, 'storeTag'])->name('store-tag');
 
     });
 });

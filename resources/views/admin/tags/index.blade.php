@@ -12,7 +12,7 @@
             <li class="breadcrumb-item active">Table of all tags</li>
         </ol>
         <div style="padding-bottom: 20px; display: inline-block">
-            <a class="btn btn-success" href="#">Add New Tag</a>
+            <a class="btn btn-success" href="{{route('admin.tag.add-tag')}}">Add New Tag</a>
         </div>
         @if(session()->has('system_message'))
             <div class="alert alert-success" role="alert">

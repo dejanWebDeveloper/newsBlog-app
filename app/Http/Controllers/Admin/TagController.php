@@ -29,4 +29,25 @@ class TagController extends Controller
 
         return $datatable->toJson();
     }
+    public function addTag()
+    {
+
+        return view('admin.tags.add_tag');
+    }
+
+    public function storeTag()
+    {
+        $data = request()->validate([
+            'name' => ['required', 'string', 'min:3', 'max:30'],
+        ]);
+
+        $data['created_at'] = now();
+
+        $newTag = new Tag();
+
+        $newTag->fill($data)->save();
+
+        session()->put('system_message', 'Tag Added Successfully');
+        return redirect()->route('admin.tag.index');
+    }
 }
