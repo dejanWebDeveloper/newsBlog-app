@@ -1,7 +1,9 @@
 @push('head_link')
     <!--css link za dataTable plugin-->
     <link rel="stylesheet" href="https://cdn.datatables.net/2.3.2/css/dataTables.dataTables.min.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
+          integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
 @endpush
 
 @extends('admin._layouts._layout')
@@ -35,6 +37,29 @@
 
                 </tbody>
             </table>
+        </div>
+        <!-- delete modal -->
+        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <form id="delete-category" method="post" action="{{route('admin.category.delete-category')}}">
+                        @csrf
+                        <input type="hidden" name="category_for_delete_id" value="">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Delete category</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure you want to delete the selected category?
+                            <p id="category_for_delete_name"></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Delete category</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 @endsection
@@ -72,6 +97,35 @@
                 "pageLength": 10,
                 "lengthMenu": [5, 10, 15, 25, 30]
             })
+
+            $('#categories-table').on('click', "[data-action='delete']", function () {
+                let id = $(this).attr('data-id');
+                let name = $(this).attr('data-name');
+
+                $("#deleteModal [name='category_for_delete_id']").val(id);
+                $('#deleteModal p#category_for_delete_name').html(name);
+            });
+            // Klik na dugme za potvrdu brisanja
+            $('#delete-category').on('submit', function (e) {
+                e.preventDefault();
+                let categoryId = $("#deleteModal [name='category_for_delete_id']").val(); // uzimamo ID iz hidden input-a u modalu
+
+                $.ajax({
+                    url: "{{ route('admin.category.delete-category') }}",
+                    type: "post",
+                    data: {
+                        _token: "{{ csrf_token() }}",
+                        category_for_delete_id: categoryId
+                    },
+                    success: function () {
+                        // Sakrij modal
+                        $('#deleteModal').modal('hide');
+                        toastr.success('Category successfully deleted.');
+                        // Reload celog DataTables umesto ručnog uklanjanja reda
+                        $('#categories-table').DataTable().ajax.reload(null, false);
+                    }
+                });
+            });
         });
     </script>
 @endpush

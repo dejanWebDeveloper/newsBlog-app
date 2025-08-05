@@ -33,6 +33,7 @@ Route::middleware('auth')->prefix('/admin')->name('admin.')->group(function (){
         Route::post('store-category', [\App\Http\Controllers\Admin\CategoryController::class, 'storeCategory'])->name('store-category');
         Route::get('/edit-category/{category}', [\App\Http\Controllers\Admin\CategoryController::class, 'editCategory'])->name('edit-category');
         Route::post('/update-category/{category}', [\App\Http\Controllers\Admin\CategoryController::class, 'updateCategory'])->name('update-category');
+        Route::post('/delete-category', [\App\Http\Controllers\Admin\CategoryController::class, 'deleteCategory'])->name('delete-category');
 
     });
     Route::name('tag.')->prefix('/tags')->group(function (){

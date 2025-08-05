@@ -94,4 +94,15 @@ class CategoryController extends Controller
         session()->put('system_message', 'Category Edited Successfully');
         return redirect()->route('admin.category.index');
     }
+    public function deleteCategory()
+    {
+        $data =  request()->validate([
+            'category_for_delete_id' => ['required', 'numeric', 'exists:categories,id'],
+        ]);
+        $category = Category::findOrFail($data['category_for_delete_id']);
+        $category->delete();
+
+        return response()->json(['success' => 'Article Deleted Successfully']);
+
+    }
 }
