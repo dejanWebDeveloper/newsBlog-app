@@ -24,7 +24,7 @@ Route::middleware('auth')->prefix('/admin')->name('admin.')->group(function (){
        Route::get('/edit-article/{article}', [\App\Http\Controllers\Admin\ArticleController::class, 'editArticle'])->name('edit-article');
        Route::post('/update-article/{article}', [\App\Http\Controllers\Admin\ArticleController::class, 'updateArticle'])->name('update-article');
        Route::post('/delete-article', [\App\Http\Controllers\Admin\ArticleController::class, 'deleteArticle'])->name('delete-article');
-
+       Route::post('/update-status', [\App\Http\Controllers\Admin\ArticleController::class, 'updateStatus'])->name('update-status');
     });
     Route::name('category.')->prefix('/categories')->group(function (){
         Route::get('/index',[\App\Http\Controllers\Admin\CategoryController::class, 'index'])->name('index');

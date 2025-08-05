@@ -162,4 +162,18 @@ class ArticleController extends Controller
         return response()->json(['success' => 'Article Deleted Successfully']);
 
     }
+    public function updateStatus()
+    {
+        $data = request()->validate([
+            'article_for_update_id' => ['required', 'numeric', 'exists:articles,id'],
+        ]);
+        $updateStatus = Article::findOrFail($data['article_for_update_id']);
+        if ($updateStatus->ban == 1) {
+            $updateStatus->ban = 0;
+        }else if ($updateStatus->ban == 0) {
+            $updateStatus->ban = 1;
+        }
+        $updateStatus->save();
+        return response()->json(['success' => 'Status Updated Successfully']);
+    }
 }

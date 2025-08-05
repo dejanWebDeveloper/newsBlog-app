@@ -69,6 +69,30 @@
                 </div>
             </div>
         </div>
+        <!-- Modal updateStatus article -->
+        <div class="modal fade" id="statusModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <form id="update-article" method="post" action="{{route('admin.article.update-status')}}">
+                        @csrf
+                        <input type="hidden" name="article_for_update_id" value="">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Change status</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure you want to change status of the selected article?
+                            <p id="article_for_update_name"></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Change status
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
 @push('footer_script')
@@ -139,7 +163,33 @@
                 });
             });
 
+            $('#articles-table').on('click', "[data-action='update']", function () {
+                let id = $(this).attr('data-id');
+                let name = $(this).attr('data-name');
+                //let status = $(this).attr('data-status')
 
+                $("#statusModal [name='article_for_update_id']").val(id);
+                $('#statusModal p#article_for_update_name').html(name);
+            });
+            $('#update-article').on('submit', function (e) {
+                e.preventDefault();
+                let articleId = $("#statusModal [name='article_for_update_id']").val();
+                $.ajax({
+                    url: "{{ route('admin.article.update-status') }}",
+                    type: "post",
+                    data: {
+                        _token: "{{ csrf_token() }}",
+                        article_for_update_id: articleId
+                    },
+                    success: function () {
+                        // Sakrij modal
+                        $('#statusModal').modal('hide');
+                        toastr.success('Article successfully updated.');
+                        // Reload celog DataTables umesto ručnog uklanjanja reda
+                        $('#articles-table').DataTable().ajax.reload(null, false);
+                    }
+                });
+            });
         });
-            </script>
+    </script>
 @endpush
