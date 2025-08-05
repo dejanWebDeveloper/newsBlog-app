@@ -38,7 +38,7 @@ class TagController extends Controller
     public function storeTag()
     {
         $data = request()->validate([
-            'name' => ['required', 'string', 'min:3', 'max:30'],
+            'name' => ['required', 'string', 'min:3', 'max:30']
         ]);
 
         $data['created_at'] = now();
@@ -48,6 +48,22 @@ class TagController extends Controller
         $newTag->fill($data)->save();
 
         session()->put('system_message', 'Tag Added Successfully');
+        return redirect()->route('admin.tag.index');
+    }
+    public function editTag(Tag $tag)
+    {
+        return view('admin.tags.edit_tag', compact('tag'));
+    }
+    public function updateTag(Tag $tag)
+    {
+        $data = request()->validate([
+            'name' => ['required', 'string', 'min:3', 'max:30'],
+        ]);
+        $data['updated_at'] = now();
+
+        $tag->fill($data)->save();
+
+        session()->put('system_message', 'Tag Edited Successfully');
         return redirect()->route('admin.tag.index');
     }
 }
