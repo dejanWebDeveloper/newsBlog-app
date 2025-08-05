@@ -146,7 +146,7 @@ class ArticleController extends Controller
             $photo = request()->file('photo'); //cuvanje slike u varijablu
             $this->savePhoto($photo, $article);
         }
-        session()->put('system_message', 'Article Added Successfully');
+        session()->put('system_message', 'Article Edited Successfully');
         return redirect()->route('admin.article.index');
     }
 }

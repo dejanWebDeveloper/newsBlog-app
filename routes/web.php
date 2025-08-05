@@ -30,6 +30,8 @@ Route::middleware('auth')->prefix('/admin')->name('admin.')->group(function (){
         Route::post('/ajax-category-datatable', [\App\Http\Controllers\Admin\CategoryController::class, 'datatable'])->name('datatable');
         Route::get('/add-category', [\App\Http\Controllers\Admin\CategoryController::class, 'addCategory'])->name('add-category');
         Route::post('store-category', [\App\Http\Controllers\Admin\CategoryController::class, 'storeCategory'])->name('store-category');
+        Route::get('/edit-category/{category}', [\App\Http\Controllers\Admin\CategoryController::class, 'editCategory'])->name('edit-category');
+        Route::post('/update-category/{category}', [\App\Http\Controllers\Admin\CategoryController::class, 'updateCategory'])->name('update-category');
 
     });
     Route::name('tag.')->prefix('/tags')->group(function (){

@@ -45,7 +45,7 @@ class CategoryController extends Controller
             'name' => ['required', 'string', 'min:3', 'max:30'],
             'description' => ['required', 'string', 'min:3', 'max:100'],
             'show_on_homepage' => ['boolean'],
-            'priority' => ['required', 'numeric'],
+            'priority' => ['required', 'numeric']
             ]);
 
         $data['created_at'] = now();
@@ -65,6 +65,33 @@ class CategoryController extends Controller
 
 
         session()->put('system_message', 'Category Added Successfully');
+        return redirect()->route('admin.category.index');
+    }
+    public function editCategory(Category $category)
+    {
+        return view('admin.categories.edit_category', compact('category'));
+    }
+    public function updateCategory(Category $category)
+    {
+        $data = request()->validate([
+            'name' => ['required', 'string', 'min:3', 'max:30'],
+            'description' => ['required', 'string', 'min:3', 'max:100'],
+            'show_on_homepage' => ['boolean'],
+            'priority' => ['required', 'numeric']
+        ]);
+        $data['updated_at'] = now();
+
+        Category::where('priority', '>=', $data['priority'])
+            ->increment('priority');
+
+        $lastCategory = Category::orderBy('id', 'desc')->first();
+        if (($data['priority'] == 0 || !isset($lastCategory->id))){
+            $data['priority'] = 1;
+        }
+
+        $category->fill($data)->save();
+
+        session()->put('system_message', 'Category Edited Successfully');
         return redirect()->route('admin.category.index');
     }
 }

@@ -1,5 +1,5 @@
 <div class="btn-group">
-    <button type="button" class="btn btn-success">Edit</button>
+    <a class="btn btn-primary" href="{{route('admin.category.edit-category', ['category'=>$category])}}">Edit</a>
 
     <button data-action="delete" type="button" class="btn btn-danger" >Delete
     </button>
