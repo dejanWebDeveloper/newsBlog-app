@@ -46,6 +46,16 @@ Route::middleware('auth')->prefix('/admin')->name('admin.')->group(function (){
         Route::post('/delete-tag', [\App\Http\Controllers\Admin\TagController::class, 'deleteTag'])->name('delete-tag');
 
     });
+    Route::name('author.')->prefix('/authors')->group(function (){
+        Route::get('/index',[\App\Http\Controllers\Admin\AuthorController::class, 'index'])->name('index');
+        Route::post('/ajax-author-datatable', [\App\Http\Controllers\Admin\AuthorController::class, 'datatable'])->name('datatable');
+        Route::get('/add-author', [\App\Http\Controllers\Admin\AuthorController::class, 'addAuthor'])->name('add-author');
+        Route::post('store-author', [\App\Http\Controllers\Admin\AuthorController::class, 'storeAuthor'])->name('store-author');
+        Route::get('/edit-author/{author}', [\App\Http\Controllers\Admin\AuthorController::class, 'editAuthor'])->name('edit-author');
+        Route::post('/update-author/{author}', [\App\Http\Controllers\Admin\AuthorController::class, 'updateAuthor'])->name('update-author');
+        Route::post('/delete-author', [\App\Http\Controllers\Admin\AuthorController::class, 'deleteAuthor'])->name('delete-author');
+
+    });
 });
 
 

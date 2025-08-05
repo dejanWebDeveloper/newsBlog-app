@@ -59,8 +59,8 @@ class ArticleController extends Controller
     public function storeArticle()
     {
         $data = request()->validate([
-            'heading' => ['required', 'string', 'min:3', 'max:30'],
-            'preheading' => ['required', 'string', 'min:3', 'max:60'],
+            'heading' => ['required', 'string', 'min:3', 'max:50'],
+            'preheading' => ['required', 'string', 'min:3', 'max:100'],
             'author' => ['required', 'numeric', 'exists:employee,id'],
             'photo' => ['nullable', 'file', 'mimes:jpeg,png,jpg', 'max:200'],
             'category_id' => ['required', 'numeric', 'exists:categories,id'],

@@ -14,15 +14,6 @@ class TagsSeeder extends Seeder
      */
     public function run(): void
     {
-        $tags = new Tag();
-
-        $tags->truncate();
-        $faker = Faker::create();
-        for ($i = 0; $i < 20; $i++) {
-            $tags->insert([
-                'name' => $faker->city,
-                'created_at' => now()
-            ]);
-        }
+        Tag::truncate();
     }
 }

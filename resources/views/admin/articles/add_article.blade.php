@@ -147,12 +147,12 @@
                         "heading": {
                             "required": true,
                             "minlength": 3,
-                            "maxlength": 30
+                            "maxlength": 60
                         },
                         "preheading": {
                             "required": true,
                             "minlength": 5,
-                            "maxlength": 60
+                            "maxlength": 100
                         },
                         "category": {
                             "required": true

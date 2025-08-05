@@ -14,15 +14,6 @@ class EmployeeSeeder extends Seeder
      */
     public function run(): void
     {
-        $employees = new Employee();
-        $employees->truncate();
-        $faker = Faker::create();
-        for ($i = 0; $i < 6; $i++) {
-            $employees->insert([
-                'name' => $faker->name(),
-                'description' => $faker->text(),
-            ]);
-        }
-
+       Employee::truncate();
     }
 }

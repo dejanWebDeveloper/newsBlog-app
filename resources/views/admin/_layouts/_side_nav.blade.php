@@ -24,6 +24,10 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                         @lang('Tags')
                     </a>
+                    <a class="nav-link" href="{{route('admin.author.index')}}">
+                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        @lang('Authors')
+                    </a>
                 </div>
             </div>
             <div class="sb-sidenav-footer">
