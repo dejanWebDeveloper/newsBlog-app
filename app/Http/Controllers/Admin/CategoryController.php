@@ -33,4 +33,38 @@ class CategoryController extends Controller
 
         return $datatable->toJson();
     }
+    public function addCategory()
+    {
+
+        return view('admin.categories.add_category');
+    }
+
+    public function storeCategory()
+    {
+        $data = request()->validate([
+            'name' => ['required', 'string', 'min:3', 'max:30'],
+            'description' => ['required', 'string', 'min:3', 'max:100'],
+            'show_on_homepage' => ['boolean'],
+            'priority' => ['required', 'numeric'],
+            ]);
+
+        $data['created_at'] = now();
+
+        Category::where('priority', '>=', $data['priority'])
+            ->increment('priority');
+
+        $lastCategory = Category::orderBy('id', 'desc')->first();
+        if (($data['priority'] == 0 || !isset($lastCategory->id))){
+            $data['priority'] = 1;
+        }
+
+        $newCategory = new Category();
+
+        $newCategory->fill($data)->save();
+
+
+
+        session()->put('system_message', 'Category Added Successfully');
+        return redirect()->route('admin.category.index');
+    }
 }

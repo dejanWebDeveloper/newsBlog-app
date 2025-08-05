@@ -167,7 +167,7 @@
                     "messages": {
                         "heading": {
                             "required": "Please enter articles heading",
-                            "minlength": "Your name must be over 3 characters",
+                            "minlength": "Your heading must be over 3 characters",
                             "maxlength": "Enter no more than 30 characters"
                         },
                         "preheading": {

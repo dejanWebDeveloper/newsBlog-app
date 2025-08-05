@@ -70,6 +70,7 @@ class ArticleController extends Controller
         ]);
         $data['ban'] = 0;
         $data['created_at'] = now();
+        $data['text'] = strip_tags($data['text']);
         $newArticle = new Article();
         $newArticle->fill($data)->save();
         //table tags

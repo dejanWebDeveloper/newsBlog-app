@@ -12,7 +12,7 @@
             <li class="breadcrumb-item active">Table of all categories</li>
         </ol>
         <div style="padding-bottom: 20px; display: inline-block">
-            <a class="btn btn-success" href="#">Add New Category</a>
+            <a class="btn btn-success" href="{{route('admin.category.add-category')}}">Add New Category</a>
         </div>
         @if(session()->has('system_message'))
             <div class="alert alert-success" role="alert">
