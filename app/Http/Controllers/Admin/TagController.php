@@ -66,4 +66,15 @@ class TagController extends Controller
         session()->put('system_message', 'Tag Edited Successfully');
         return redirect()->route('admin.tag.index');
     }
+    public function deleteTag()
+    {
+        $data =  request()->validate([
+            'tag_for_delete_id' => ['required', 'numeric', 'exists:tags,id'],
+        ]);
+        $tag = Tag::findOrFail($data['tag_for_delete_id']);
+        $tag->delete();
+
+        return response()->json(['success' => 'Tag Deleted Successfully']);
+
+    }
 }

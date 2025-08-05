@@ -43,6 +43,7 @@ Route::middleware('auth')->prefix('/admin')->name('admin.')->group(function (){
         Route::post('store-tag', [\App\Http\Controllers\Admin\TagController::class, 'storeTag'])->name('store-tag');
         Route::get('/edit-tag/{tag}', [\App\Http\Controllers\Admin\TagController::class, 'editTag'])->name('edit-tag');
         Route::post('/update-tag/{tag}', [\App\Http\Controllers\Admin\TagController::class, 'updateTag'])->name('update-tag');
+        Route::post('/delete-tag', [\App\Http\Controllers\Admin\TagController::class, 'deleteTag'])->name('delete-tag');
 
     });
 });
