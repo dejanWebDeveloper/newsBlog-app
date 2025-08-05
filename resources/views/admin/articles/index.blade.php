@@ -43,6 +43,30 @@
                 </tbody>
             </table>
         </div>
+        <!-- modal for deleting articles -->
+        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <form id="delete-article" method="post" action="{{route('admin.article.delete-article')}}">
+                        @csrf
+                        <input type="hidden" name="article_for_delete_id" value="">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Delete article</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure you want to delete the selected article?
+                            <p id="article_for_delete_name"></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Delete article
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
 @push('footer_script')
@@ -81,6 +105,39 @@
                 "pageLength": 25,
                 "lengthMenu": [5, 10, 15, 25, 30, 50, 100]
             })
+            //delete article
+            // Otvaranje modala i popunjavanje podataka
+            $('#articles-table').on('click', "[data-action='delete']", function () {
+                let id = $(this).attr('data-id');
+                let name = $(this).attr('data-name');
+
+                $("#deleteModal [name='article_for_delete_id']").val(id);
+                $('#deleteModal p#article_for_delete_name').html(name);
+            });
+
+            // Klik na dugme za potvrdu brisanja
+            $('#delete-article').on('submit', function (e) {
+                e.preventDefault();
+                let articleId = $("#deleteModal [name='article_for_delete_id']").val(); // uzimamo ID iz hidden input-a u modalu
+
+                $.ajax({
+                    url: "{{ route('admin.article.delete-article') }}",
+                    type: "post",
+                    data: {
+                        _token: "{{ csrf_token() }}",
+                        article_for_delete_id: articleId
+                    },
+                    success: function () {
+                        // Sakrij modal
+                        $('#deleteModal').modal('hide');
+                        toastr.success('Article successfully deleted.');
+                        // Reload celog DataTables umesto ručnog uklanjanja reda
+                        $('#articles-table').DataTable().ajax.reload(null, false);
+                    }
+                });
+            });
+
+
         });
             </script>
 @endpush

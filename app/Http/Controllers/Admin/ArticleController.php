@@ -149,4 +149,17 @@ class ArticleController extends Controller
         session()->put('system_message', 'Article Edited Successfully');
         return redirect()->route('admin.article.index');
     }
+    public function deleteArticle()
+    {
+        $data =  request()->validate([
+            'article_for_delete_id' => ['required', 'numeric', 'exists:articles,id'],
+        ]);
+        $article = Article::findOrFail($data['article_for_delete_id']);
+        $article->delete();
+        //deleting from article_tags table
+        $article->tag()->sync([]);
+
+        return response()->json(['success' => 'Article Deleted Successfully']);
+
+    }
 }
