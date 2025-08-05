@@ -36,7 +36,7 @@ class ArticleController extends Controller
                 return 'Banned';
             } else {
                 return 'Active';
-            };
+            }
         })->addColumn('actions', function ($row) {
             return view('admin.articles.partials.actions', [
                 'article' => $row,
@@ -93,5 +93,60 @@ class ArticleController extends Controller
 
         $newArticle->photo = $photoName;
         $newArticle->save();
+    }
+    public function deletePhoto($article)
+    {
+        // Ako članak nema fotografiju, nema potrebe za brisanjem
+        if (!$article->photo) {
+            return false;
+        }
+
+        // Koristimo basename() da bismo se zaštitili od eventualnog path traversal napada
+        $filename = basename($article->photo);
+        $path = public_path('storage/photo/' . $filename);
+
+        // Ako fajl postoji — obriši ga
+        if (file_exists($path)) {
+            return unlink($path); // vraća true/false
+        }
+
+        return false; // fajl nije postojao
+    }
+    public function editArticle(Article $article)
+    {
+        $authors = Employee::all();
+        $tags = Tag::all();
+        $categories = Category::all();
+        return view('admin.articles.edit_article', compact(
+            'article',
+            'authors',
+            'tags',
+            'categories'
+        ));
+    }
+    public function updateArticle(Article $article)
+    {
+        $data = request()->validate([
+            'heading' => ['required', 'string', 'min:3', 'max:30'],
+            'preheading' => ['required', 'string', 'min:3', 'max:60'],
+            'author' => ['required', 'numeric', 'exists:employee,id'],
+            'photo' => ['nullable', 'file', 'mimes:jpeg,png,jpg', 'max:200'],
+            'category_id' => ['required', 'numeric', 'exists:categories,id'],
+            'tags' => ['required', 'array', 'min:2'],
+            'tags.*' => ['required', 'numeric', 'exists:tags,id'],
+            'text' => ['required', 'string', 'min:20', 'max:1000']
+        ]);
+        $data['updated_at'] = now();
+        $data['text'] = strip_tags($data['text']);
+        $article->fill($data)->save();
+        //table tags
+        $article->tag()->sync($data['tags']);
+        if(request()->hasFile('photo')) { //provera da li je administrator uploadovao sliku
+            $this->deletePhoto($article);
+            $photo = request()->file('photo'); //cuvanje slike u varijablu
+            $this->savePhoto($photo, $article);
+        }
+        session()->put('system_message', 'Article Added Successfully');
+        return redirect()->route('admin.article.index');
     }
 }
